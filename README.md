@@ -113,3 +113,30 @@ both Google Drive and the application before sync convergence.
   - Retryable
 
 ---
+## Implementation Walkthrough
+This repository includes a fully runnable mock implementation that simulates
+Google Drive metadata synchronization end‑to‑end.
+
+The flow demonstrated in code:
+
+- A mock Google Drive client simulates the Changes API
+
+- The ingestor fetches changes using a cursor
+
+- Changes are converted into internal events
+
+- Events are published to an in‑memory queue
+
+- A sync worker consumes events and applies metadata updates
+
+- The system shuts down cleanly after processing all events
+
+This mirrors how a production system would behave, without relying on external APIs.
+
+## Results
+### Sync Mock Screenshot
+![Sync flow diagram](./screenshots/Sync-Mock.png)
+
+
+
+
